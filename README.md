@@ -8,7 +8,7 @@
 
 <p align="center">
   <strong>Universidade Federal de Alagoas (UFAL)</strong><br>
-  Programa de Pós-Graduação em Informática<br>
+  Programa de Pós-Graduação em Informática (Mestrado)<br>
   Disciplina: Inteligência Artificial Aplicada à Educação<br><br>
   <strong>Autor:</strong> Fábio Linhares<br>
   <strong>Orientador:</strong> Prof. Dr. Ig Ibert Bittencourt Santana Pinto<br>
@@ -376,39 +376,35 @@ NÍVEL 1: Aluno i em Escola j (N=10.691)
 
 ```
 ia-na-educacao/
-├── README.md                          # Este arquivo
-├── projeto2.ipynb                     # Notebook principal (EDM pipeline completo)
-├── projeto_artigo.pdf                 # Documento base do projeto
+├── README.md                           # Este arquivo
+├── pesquisa.ipynb                      # Notebook principal (EDM pipeline completo)
+├── artigo.pdf                          # Documento base do projeto
 │
-├── pisa2018/                          # Dados PISA 2018
-│   ├── PISA2018_CODEBOOK.xlsx        # Dicionário de variáveis
+├── pisa2018/                           # Dados PISA 2018
+│   ├── PISA2018_CODEBOOK.xlsx          # Dicionário de variáveis
 │   ├── stu/
-│   │   └── STU_BRA.xlsx              # Dados individuais de alunos
+│   │   └── STU_BRA.xlsx                # Dados individuais de alunos
 │   ├── sch/
-│   │   └── SCH_BRA.xlsx              # Dados de escolas (questionário diretor)
+│   │   └── SCH_BRA.xlsx                # Dados de escolas (questionário diretor)
 │   ├── sch_stu/
-│   │   └── SCH_STU_BRA.xlsx          # Dados agregados (escola + médias alunos)
+│   │   └── SCH_STU_BRA.xlsx            # Dados agregados (escola + médias alunos)
 │   ├── sch_tch/
-│   │   └── SCH_TCH_BRA.xlsx          # Dados agregados (escola + médias professores)
+│   │   └── SCH_TCH_BRA.xlsx            # Dados agregados (escola + médias professores)
 │   ├── tch/
-│   │   └── TCH_BRA.xlsx              # Dados individuais de professores
+│   │   └── TCH_BRA.xlsx                # Dados individuais de professores
 │   └── flt/
-│       └── FLT_BRA.xlsx              # Letramento financeiro (opcional)
+│       └── FLT_BRA.xlsx                # Letramento financeiro (opcional)
 │
-├── scripts/                           # Scripts auxiliares
-│   ├── pisa_dataframes.py            # Carregamento e preparação de dados
-│   ├── pisa_prep.py                  # Limpeza e transformações
-│   ├── pisa_read_xlsx.py             # Leitura de arquivos Excel
-│   └── ls_tree.py                    # Utilitário para estrutura de diretórios
+├── scripts/                            # Scripts auxiliares
+│   └── arquivos.py*                    # Funções diversas para preparação e análise
 │
-├── results/                           # Resultados das análises (criado ao executar)
-│   ├── tables/                       # Tabelas de resultados
-│   ├── figures/                      # Gráficos e visualizações
-│   └── models/                       # Objetos de modelo salvos
+├── results/                            # Resultados das análises (criado ao executar)
+│   ├── tables/                         # Tabelas de resultados
+│   ├── figures/                        # Gráficos e visualizações
+│   └── models/                         # Objetos de modelo salvos
 │
-└── docs/                              # Documentação adicional
-    ├── DADOS_PISA_2018_ANALISE_COMPLETA.md  # Guia detalhado dos dados
-    └── metodologia_multinivel.md     # Aprofundamento metodológico
+└── docs/                               # Documentação adicional
+    └── arquivos de pesquisa            # Documentos de apoio e referências
 ```
 
 ---
@@ -417,55 +413,30 @@ ia-na-educacao/
 
 ### Requisitos de Sistema
 
-- **Python:** 3.11 ou superior
+- **Python:** 3.12 ou superior
 - **Memória RAM:** Mínimo 8 GB (recomendado 16 GB para datasets completos)
-- **Espaço em disco:** ~2 GB para dados PISA completos
+- **Espaço em disco:** ~200 MB para dados PISA
 
 ### Dependências Python
 
-```bash
-# Análise de dados
-pandas>=2.0.0
-numpy>=1.24.0
-openpyxl>=3.1.0              # Leitura de arquivos Excel
+Vide `requirements.txt` para lista completa.
 
-# Modelagem estatística
-statsmodels>=0.14.0          # Modelos multinível (MixedLM)
-scipy>=1.10.0
-
-# Visualização
-matplotlib>=3.7.0
-seaborn>=0.12.0
-
-# Utilitários
-python-dotenv>=1.0.0         # Variáveis de ambiente
-tqdm>=4.65.0                 # Barra de progresso
-
-# Opcional (análises avançadas)
-linearmodels>=5.3            # Modelos em painel
-pyreadstat>=1.2.0            # Leitura de .sav (SPSS)
 ```
-
 ### Instalação
 
 #### 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/seu-usuario/ia-na-educacao.git
-cd ia-na-educacao
+git clone https://github.com/fabio-linhares/EDM---Efeito-Escola-e-Gradiente-Socioecon-mico-no-Brasil-PISA-2018-.git
+cd EDM---Efeito-Escola-e-Gradiente-Socioecon-mico-no-Brasil-PISA-2018
 ```
 
 #### 2. Criar Ambiente Virtual
 
 ```bash
 # Criar ambiente
-python -m venv venv
-
-# Ativar ambiente
-# Linux/Mac:
-source venv/bin/activate
-# Windows:
-venv\Scripts\activate
+conda create -n ambiente_edm python=3.12 -y
+conda activate ambiente_edm
 ```
 
 #### 3. Instalar Dependências
@@ -478,12 +449,12 @@ pip install -r requirements.txt
 Ou instalar pacotes individuais:
 
 ```bash
-pip install pandas numpy statsmodels matplotlib seaborn openpyxl python-dotenv
+pip install pandas numpy statsmodels matplotlib seaborn openpyxl python-dotenv *
 ```
 
-#### 4. Baixar Dados PISA 2018 (se necessário)
+#### 4. Baixar Dados PISA 2018
 
-Se os arquivos não estiverem no repositório:
+Caso os arquivos não estejam no repositório:
 
 ```bash
 # Opção 1: Download manual
@@ -508,7 +479,7 @@ pip install jupyter
 # Iniciar Jupyter
 jupyter notebook
 
-# Abrir: projeto2.ipynb
+# Abrir: pesquisa.ipynb
 ```
 
 **Estrutura do Notebook:**
@@ -525,7 +496,7 @@ jupyter notebook
 ### Opção 2: Scripts Python
 
 ```bash
-# 1. Preparar dados
+# 1. Preparar dados (Scripts em desenvolvimento)
 python scripts/pisa_prep.py --input pisa2018/ --output data/processed/
 
 # 2. Executar modelos
@@ -537,6 +508,16 @@ python scripts/generate_report.py --results results/ --output report.pdf
 
 ### Opção 3: Executar Análise Completa (Pipeline)
 
+```bash
+# Script que executa todo o pipeline EDM
+bash run_analysis.sh
+```
+
+---
+
+## 📈 Resultados Esperados
+
+### 1. Estimativa do ICC (Q1)
 ```bash
 # Script que executa todo o pipeline EDM
 bash run_analysis.sh
@@ -713,17 +694,18 @@ Se você usar este projeto em sua pesquisa, por favor cite:
 ## 📞 Contato
 
 **Autor:** Fábio Linhares  
+**E-mail:** fl@ic.ufal.br   
+**Site:** https://www.fabiolinhares.com.br/     
 **Instituição:** Universidade Federal de Alagoas (UFAL)  
-**Disciplina:** Inteligência Artificial Aplicada à Educação  
+**Disciplina:** Inteligência Artificial Na Educação  
 **Orientador:** Prof. Dr. Ig Ibert Bittencourt Santana Pinto  
 
 ---
 
 <p align="center">
-  <sub>Desenvolvido com 📊 e ☕ para promover equidade educacional no Brasil</sub>
+  <sub>Projeto desenvolvido no âmbito da disciplina, com o propósito de apoiar políticas mais equitativas para a educação brasileira.</sub>
 </p>
 
 <p align="center">
   <a href="#-resumo-executivo">⬆ Voltar ao topo</a>
 </p>
-# EDM---Efeito-Escola-e-Gradiente-Socioecon-mico-no-Brasil-PISA-2018-
