@@ -63,7 +63,16 @@ Este projeto de Mineração de Dados Educacionais (EDM) investiga o **"efeito es
 
 ### O PISA como Ferramenta de Diagnóstico
 
-O **Programme for International Student Assessment (PISA)**, coordenado pela OCDE desde 2000, avalia competências de estudantes de 15 anos em Leitura, Matemática e Ciências. No Brasil, o INEP coordena a aplicação desde o primeiro ciclo. O PISA 2018 avaliou **10.691 estudantes** em **597 escolas** brasileiras.
+O **Programme for International Student Assessment (PISA)**, coordenado pela OCDE desde 2000, avalia competências de estudantes de 15 anos em Leitura, Matemática e Ciências. No Brasil, o INEP coordena a aplicação desde o primeiro ciclo. O PISA 2018 avaliou **10.691 estudantes** em **597 escolas** brasileiras. A escolha deste tema de pesquisa foi motivada pelo fenômeno do **"PISA Shock"** ocorrido na Alemanha após a divulgação dos primeiros resultados em 2001. Até então considerado um modelo educacional de excelência, o país foi surpreendido ao descobrir que seus estudantes apresentavam desempenho mediano e, mais preocupante, **alto nível de desigualdade educacional** associado ao background socioeconômico dos alunos.
+
+O impacto dessa revelação desencadeou uma profunda **reforma no sistema educacional alemão**, com:
+- Ampliação da educação infantil (especialmente para famílias desfavorecidas)
+- Implementação de avaliações padronizadas nacionais
+- Foco em competências práticas (não apenas conteúdos acadêmicos)
+- Investimento em formação continuada de professores
+- Programas de apoio a escolas em contextos vulneráveis
+
+Ao longo dos ciclos seguintes (2006-2015), a Alemanha conseguiu **reduzir significativamente as desigualdades** e melhorar o desempenho médio, demonstrando que **políticas baseadas em evidência** podem transformar sistemas educacionais. **Para o Brasil**, esse exemplo histórico é particularmente relevante: assim como a Alemanha em 2001, o país enfrenta o desafio de **alto desempenho desigual**, com forte dependência entre origem socioeconômica e resultados educacionais. Este projeto busca, portanto, **quantificar fatores escolares modificáveis** (gestão, clima, práticas pedagógicas) que possam orientar políticas públicas rumo a um sistema mais **equitativo e eficaz**.
 
 ### Desigualdades Educacionais no Brasil
 
@@ -427,8 +436,8 @@ Vide `requirements.txt` para lista completa.
 #### 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/fabio-linhares/EDM---Efeito-Escola-e-Gradiente-Socioecon-mico-no-Brasil-PISA-2018-.git
-cd EDM---Efeito-Escola-e-Gradiente-Socioecon-mico-no-Brasil-PISA-2018
+git clone https://github.com/fabio-linhares/EDM---Efeito-Escola-e-Gradiente-Socioeconômico-no-Brasil-PISA-2018-.git
+cd EDM---Efeito-Escola-e-Gradiente-Socioeconômico-no-Brasil-PISA-2018
 ```
 
 #### 2. Criar Ambiente Virtual
@@ -508,16 +517,6 @@ python scripts/generate_report.py --results results/ --output report.pdf
 
 ### Opção 3: Executar Análise Completa (Pipeline)
 
-```bash
-# Script que executa todo o pipeline EDM
-bash run_analysis.sh
-```
-
----
-
-## 📈 Resultados Esperados
-
-### 1. Estimativa do ICC (Q1)
 ```bash
 # Script que executa todo o pipeline EDM
 bash run_analysis.sh
